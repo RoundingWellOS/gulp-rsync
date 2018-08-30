@@ -1,14 +1,12 @@
 /*jshint strict: false*/
 
 'use strict';
-
-var gutil = require('gulp-util');
+var flog = require('fancy-log');
 var log = require('./log.js');
 var path = require('path');
 var rsync = require('./rsync.js');
 var through = require('through2');
-
-var PluginError = gutil.PluginError;
+var PluginError = require('plugin-error');
 
 module.exports = function(options) {
   if (typeof options !== 'object') {
@@ -125,7 +123,7 @@ module.exports = function(options) {
       config.stdoutHandler = handler;
       config.stderrHandler = handler;
 
-      gutil.log('gulp-rsync:', 'Starting rsync to ' + destination + '...');
+      flog('gulp-rsync:', 'Starting rsync to ' + destination + '...');
     }
 
     rsync(config).execute(function(error, command) {
@@ -133,10 +131,10 @@ module.exports = function(options) {
         this.emit('error', new PluginError('gulp-rsync', error.stack));
       }
       if (options.command) {
-        gutil.log(command);
+        flog(command);
       }
       if (!options.silent) {
-        gutil.log('gulp-rsync:', 'Completed rsync.');
+        flog('gulp-rsync:', 'Completed rsync.');
       }
       cb();
     }.bind(this));

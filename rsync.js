@@ -1,8 +1,8 @@
 'use strict';
 
 var assert = require('better-assert');
-var every = require('lodash.every');
-var isString = require('lodash.isstring');
+var every = require('underscore').every;
+var isString = require('underscore').isString;
 var spawn = require('child_process').spawn;
 
 function rsync(config) {

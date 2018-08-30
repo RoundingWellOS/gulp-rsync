@@ -1,5 +1,7 @@
 ## gulp-rsync
 
+RoundingWellOS has updated dependencies
+
 Use the file transferring and syncing capabilities of `rsync` within your Gulp task. `gulp-rsync` calls `rsync` and offers you a subset of options for an easy setup.
 
 ### Prerequisites
